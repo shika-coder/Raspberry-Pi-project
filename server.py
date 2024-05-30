@@ -1,5 +1,6 @@
-import flask
-from logik import collect_data  # Importiere die Funktion collect_data aus logik.py
+from flask import Flask, jsonify, request, render_template
+from logik import collect_data, delete_json
+import os
 
 app = Flask(__name__)
 
@@ -17,6 +18,10 @@ def process():
         # Zum Beispiel in der Antwort verwenden oder in einer Datenbank speichern
 
         return result
+
+@app.route('/delete_json', methods=['POST'])
+def delete():
+    return delete_json()
 
 if __name__ == '__main__':
     app.run(debug=True)

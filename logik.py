@@ -1,6 +1,9 @@
 # logik.py
 import json
-from flask import request, redirect, url_for
+from flask import request, redirect, url_for, jsonify
+import json
+
+JSON_FILE_PATH = 'data.json'
 
 def collect_data():
     if request.method == 'POST':
@@ -35,4 +38,15 @@ def collect_data():
             json.dump(data, file, indent=4)
 
         return redirect(url_for('index'))
+    
+def delete_json():
+    try:
+        # Leere Liste (oder leeres Dictionary) in die JSON-Datei schreiben
+        with open(JSON_FILE_PATH, 'w') as json_file:
+            json.dump([], json_file)
+        
+        return jsonify({'message': 'JSON Datei wurde erfolgreich geleert.'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 

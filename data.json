@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "name": "",
+        "email": "",
+        "phone": "",
+        "address": ""
+    },
+    {
+        "name": "Kolja",
+        "email": "kolja@krumbacher.net",
+        "phone": "12345678",
+        "address": "M\u00fchlendamm 49, 22087 Hamburg"
+    },
+    {
+        "name": "Bruno Siefke",
+        "email": "bruno.siefke@gmail.com",
+        "phone": "10239102931",
+        "address": "Zikadenweg 28c"
+    }
+]

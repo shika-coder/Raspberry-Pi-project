@@ -50,3 +50,15 @@ def delete_json():
         return jsonify({'error': str(e)}), 500
 
 
+def delete_contact(contact_id):
+    with open('data.json', 'r') as f:
+        contacts = json.load(f)
+
+    updated_contacts = [contact for contact in contacts if contact['id'] != contact_id] 
+
+    with open('data.json', 'w')as f:
+        json.dump(updated_contacts, f, indent=4)
+
+        return True, "contact deleted succesfully"
+
+

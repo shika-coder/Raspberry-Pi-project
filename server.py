@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request, render_template
-from logik import collect_data, delete_json
-import os
+from logik import collect_data, delete_json, delete_contact
+import json
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('contacts.html')
 
 @app.route('/process', methods=['POST'])
 def process():
@@ -22,6 +22,20 @@ def process():
 @app.route('/delete_json', methods=['POST'])
 def delete():
     return delete_json()
+
+@app.route('/contacts')
+def contacts():
+    with open('data.json') as f:
+        contacts = json.load(f)
+    return jsonify(contacts)
+
+
+@app.route('/delete_contact', methods=['POST'])
+def delete_conatcs():
+    return delete_contact()
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

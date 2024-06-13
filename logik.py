@@ -8,6 +8,7 @@ JSON_FILE_PATH = 'data.json'
 def collect_data():
     if request.method == 'POST':
         # Zugriff auf die Formulardaten
+        contact_id = request.form['contact_id']
         name = request.form['name']
         email = request.form['email']
         phone = request.form['phone']
@@ -20,12 +21,13 @@ def collect_data():
             data = []
 
 
-        existing_data = next((item for item in data if item['name'] == name and item['email'] == email and item['address'] == address), None)
+        existing_data = next((item for item in data if item['name'] == name and item['email'] == email and item['address'] == address and item['contact_id'] == contact_id), None)
         if existing_data:
             return redirect(url_for('index'))
 
         # Füge neue Daten hinzu
         new_data = {
+            'contact_id': contact_id,
             'name': name,
             'email': email,
             'phone': phone,
@@ -60,5 +62,6 @@ def delete_contact(contact_id):
         json.dump(updated_contacts, f, indent=4)
 
         return True, "contact deleted succesfully"
+    
 
 

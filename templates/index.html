@@ -6,6 +6,79 @@
     <title>Formular</title>
 </head>
 <body>
+    <style>
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        /* Formular Container */
+        form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+            max-width: 400px;  /* Maximale Breite des Formulars */
+            width: 100%;  /* Vollständige Breite innerhalb der maximalen Breite */
+            box-sizing: border-box; /* Schließt Padding in die Breite ein */
+        }
+        
+        /* Beschriftungen und Eingabefelder */
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], button {
+            width: calc(100% - 22px); /* Breite anpassen, um das Padding mit einzubeziehen */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box; /* Schließt Padding in die Breite ein */
+        }
+
+        /* Sende-Schaltfläche */
+        input[type="submit"], button {
+            background: #00c6ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            width: 100%; /* Schaltflächen nehmen die volle Breite ein */
+            padding: 10px;
+            border-radius: 30px;
+        }
+        
+        input[type="submit"]:hover, button:hover {
+            background: #0097e6;
+        }
+
+        /* Zurück-Link */
+        a {
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block; /* Display block, um den Link auf die volle Breite zu strecken */
+            margin-top: 20px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #333;
+        }
+    </style>
+
     <form action="/process" method="POST">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br>
@@ -28,6 +101,9 @@
 
     <form action="/delete_json" method="post">
         <button type="submit">Inhalt der JSON Datei löschen</button>
+    </form>
+    <form action="/view_contatcs">
+        <button type="submit"  method="POST">View Contacts</button>
     </form>
 
     <a href="/" style="display:block; margin-top: 10px;">Zurück</a>

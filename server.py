@@ -34,8 +34,13 @@ def contacts():
 def delete_conatcs():
     return delete_contact()
 
+@app.route('/view_contatcs')
+def view_contacts():
+    return render_template('contacts.html', methods=['POST'])
 
-
+@app.route('/enter_contact', methods=['POST'])
+def return_contact():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

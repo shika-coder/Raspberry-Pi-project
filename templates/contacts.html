@@ -25,18 +25,35 @@
         position: absolute;
         top: 5px;
         right: 5px;
-        background-color: #ed645a;
+        background-color: #000;
         color: #fff;
         border-radius: 10px;
         border: none;
         padding: 5px;
         cursor: pointer;
     }
+
+    .return_button {
+        position: absolute;
+        right: 10%;
+        border: none;
+        border-radius: 20px;
+        background-color: #000;
+        padding: 20px;
+        color: #fff;
+    }
+
+
 </style>
 </head>
 <body>
 <div class="container">
-    <h1>Contact Viewer</h1>
+    <div class="header">
+        <h1>Contact Viewer</h1>
+        <form action="/enter_contact" method="POST">
+            <button type="submit" class="return_button">Return to Main page</button>
+        </form>
+    </div>
     <div id="contacts"></div>
 </div>
 

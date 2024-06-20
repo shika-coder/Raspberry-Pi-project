@@ -6,13 +6,27 @@
 <title>Contact Viewer</title>
 <style>
     body {
+        background: linear-gradient(to right, #4facfe, #00f2fe);
         font-family: Arial, sans-serif;
         margin: 0;
-        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
     .container {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        margin: 10px;
         max-width: 800px;
-        margin: 20px auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
     }
     .contact-card {
         border: 1px solid #ccc;
@@ -32,7 +46,6 @@
         padding: 5px;
         cursor: pointer;
     }
-
     .return_button {
         position: absolute;
         right: 10%;
@@ -57,8 +70,13 @@
 
 <!-- JavaScript-Script am Ende des Body-Bereichs laden -->
 <script>
+<<<<<<< HEAD
     // Sicherstellen, dass die Funktion deleteContact global definiert ist
     window.deleteContact = function(id) {
+=======
+    // Funktion zum Löschen eines Kontakts
+    function deleteContact(id) {
+>>>>>>> 008b3f2 (delete works, UI changes)
         const contactCard = document.getElementById('contact-' + id);
         if (contactCard) {
             contactCard.remove(); // Entfernt das Kontakt-Element aus dem DOM
@@ -66,7 +84,11 @@
         } else {
             console.error(`Kontakt mit ID ${id} nicht gefunden.`);
         }
+<<<<<<< HEAD
     };
+=======
+    }
+>>>>>>> 008b3f2 (delete works, UI changes)
 
     // Abrufen der Kontaktdaten und Erstellen der Kontaktkarten
     fetch('/contacts')
@@ -76,8 +98,12 @@
             contacts.forEach(contact => {
                 const contactCard = document.createElement('div');
                 contactCard.classList.add('contact-card');
+<<<<<<< HEAD
                 contactCard.id = 'contact-' + contact.contact_id; // Setzt die ID basierend auf contact_id
 
+=======
+                contactCard.id = 'contact-' + contact.contact_id;
+>>>>>>> 008b3f2 (delete works, UI changes)
                 const html = `
                     <h2>${contact.name}</h2>
                     <p>Email: ${contact.email}</p>

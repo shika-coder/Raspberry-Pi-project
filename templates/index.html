@@ -21,6 +21,7 @@
         form {
             background: rgba(255, 255, 255, 0.9);
             padding: 20px;
+            padding-bottom: 10px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             margin: 10px;
@@ -57,6 +58,7 @@
             width: 100%; /* Schaltflächen nehmen die volle Breite ein */
             padding: 10px;
             border-radius: 30px;
+            margin-bottom: 10px;
         }
         
         input[type="submit"]:hover, button:hover {
@@ -79,33 +81,36 @@
         }
     </style>
 
-    <form action="/process" method="POST">
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
-        
-        <label for="email">E-Mail:</label><br>
-        <input type="email" id="email" name="email"><br>
+    <div class="fields">
+        <form action="/process" method="POST">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            
+            <label for="email">E-Mail:</label><br>
+            <input type="email" id="email" name="email"><br>
+    
+            <label for="phone">Telefonnummer:</label><br>
+            <input type="tel" id="phone" name="phone"><br>
+    
+            <!-- Neues Feld für die Adresse -->
+            <label for="address">Adresse:</label><br>
+            <input type="text" id="address" name="address"><br>
+    
+            <label for="contact_id">Id:</label><br>
+            <input type="text" id="contact_id" name="contact_id"><br><br>
+    
+            <input type="submit" value="Absenden">
+        </form>
+    
+        <form action="/delete_json" method="post">
+            <button type="submit">Inhalt der JSON Datei löschen</button>
+        </form>
+        <form action="/view_contatcs">
+            <button type="submit"  method="POST">View Contacts</button>
+        </form>
+    
+        <a href="/" style="display:block; margin-top: 10px;">Zurück</a>
+    </div>
 
-        <label for="phone">Telefonnummer:</label><br>
-        <input type="tel" id="phone" name="phone"><br>
-
-        <!-- Neues Feld für die Adresse -->
-        <label for="address">Adresse:</label><br>
-        <input type="text" id="address" name="address"><br>
-
-        <label for="contact_id">Id:</label><br>
-        <input type="text" id="contact_id" name="contact_id"><br><br>
-
-        <input type="submit" value="Absenden">
-    </form>
-
-    <form action="/delete_json" method="post">
-        <button type="submit">Inhalt der JSON Datei löschen</button>
-    </form>
-    <form action="/view_contatcs">
-        <button type="submit"  method="POST">View Contacts</button>
-    </form>
-
-    <a href="/" style="display:block; margin-top: 10px;">Zurück</a>
 </body>
 </html>

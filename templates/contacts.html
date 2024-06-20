@@ -42,8 +42,6 @@
         padding: 20px;
         color: #fff;
     }
-
-
 </style>
 </head>
 <body>
@@ -57,7 +55,20 @@
     <div id="contacts"></div>
 </div>
 
+<!-- JavaScript-Script am Ende des Body-Bereichs laden -->
 <script>
+    // Sicherstellen, dass die Funktion deleteContact global definiert ist
+    window.deleteContact = function(id) {
+        const contactCard = document.getElementById('contact-' + id);
+        if (contactCard) {
+            contactCard.remove(); // Entfernt das Kontakt-Element aus dem DOM
+            console.log(`Kontakt mit ID ${id} wurde gelöscht.`);
+        } else {
+            console.error(`Kontakt mit ID ${id} nicht gefunden.`);
+        }
+    };
+
+    // Abrufen der Kontaktdaten und Erstellen der Kontaktkarten
     fetch('/contacts')
         .then(response => response.json())
         .then(contacts => {
@@ -65,19 +76,20 @@
             contacts.forEach(contact => {
                 const contactCard = document.createElement('div');
                 contactCard.classList.add('contact-card');
-                contactCard.id = 'contact-' + contact.id;
+                contactCard.id = 'contact-' + contact.contact_id; // Setzt die ID basierend auf contact_id
+
                 const html = `
                     <h2>${contact.name}</h2>
                     <p>Email: ${contact.email}</p>
                     <p>Phone: ${contact.phone}</p>
                     <p>Address: ${contact.address}</p>
-                    <button class="delete-btn" onclick="deleteContact(${contact.id})">Delete</button>
+                    <button class="delete-btn" onclick="deleteContact(${contact.contact_id})">Delete</button>
                 `;
                 contactCard.innerHTML = html;
                 contactsDiv.appendChild(contactCard);
             });
         })
-        .catch(error => console.error('Error fetching contacts:', error));
+        .catch(error => console.error('Fehler beim Abrufen der Kontakte:', error));
 </script>
 
 </body>
